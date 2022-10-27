@@ -2381,7 +2381,7 @@ public abstract class UIComponent implements PartialStateHolder, TransientStateH
     // name This collection is lazily instantiated
     // The set of ValueExpressions for this component, keyed by property
     // name This collection is lazily instantiated
-    @Deprecated
-    protected Map<String, ValueExpression> bindings = null;
+    // @Deprecated
+    // protected Map<String, ValueExpression> bindings = null;
 
 }

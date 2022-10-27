@@ -1140,9 +1140,9 @@ public abstract class UIComponentBase extends UIComponent {
             Object savedBehaviors = saveBehaviorsState(context);
             Object savedBindings = null;
 
-            if (bindings != null) {
-                savedBindings = saveBindingsState(context);
-            }
+            // if (bindings != null) {
+            //     savedBindings = saveBindingsState(context);
+            // }
 
             Object savedHelper = null;
             if (stateHelper != null) {
@@ -1177,9 +1177,9 @@ public abstract class UIComponentBase extends UIComponent {
             values[1] = saveSystemEventListeners(context);
             values[2] = saveBehaviorsState(context);
 
-            if (bindings != null) {
-                values[3] = saveBindingsState(context);
-            }
+            // if (bindings != null) {
+            //     values[3] = saveBindingsState(context);
+            // }
 
             if (stateHelper != null) {
                 values[4] = stateHelper.saveState(context);
@@ -1224,9 +1224,9 @@ public abstract class UIComponentBase extends UIComponent {
             behaviors = restoreBehaviorsState(context, values[2]);
         }
 
-        if (values[3] != null) {
-            bindings = restoreBindingsState(context, values[3]);
-        }
+        // if (values[3] != null) {
+        //     bindings = restoreBindingsState(context, values[3]);
+        // }
 
         if (values[4] != null) {
             getStateHelper().restoreState(context, values[4]);
@@ -1429,41 +1429,41 @@ public abstract class UIComponentBase extends UIComponent {
         return result;
     }
 
-    private static Map<String, ValueExpression> restoreBindingsState(FacesContext context, Object state) {
+    // private static Map<String, ValueExpression> restoreBindingsState(FacesContext context, Object state) {
 
-        if (state == null) {
-            return null;
-        }
-        Object values[] = (Object[]) state;
-        String names[] = (String[]) values[0];
-        Object states[] = (Object[]) values[1];
-        Map<String, ValueExpression> bindings = new HashMap<>(names.length);
-        for (int i = 0; i < names.length; i++) {
-            bindings.put(names[i], (ValueExpression) restoreAttachedState(context, states[i]));
-        }
-        return bindings;
+    //     if (state == null) {
+    //         return null;
+    //     }
+    //     Object values[] = (Object[]) state;
+    //     String names[] = (String[]) values[0];
+    //     Object states[] = (Object[]) values[1];
+    //     Map<String, ValueExpression> bindings = new HashMap<>(names.length);
+    //     for (int i = 0; i < names.length; i++) {
+    //         bindings.put(names[i], (ValueExpression) restoreAttachedState(context, states[i]));
+    //     }
+    //     return bindings;
 
-    }
+    // }
 
-    private Object saveBindingsState(FacesContext context) {
+    // private Object saveBindingsState(FacesContext context) {
 
-        if (bindings == null) {
-            return null;
-        }
+    //     if (bindings == null) {
+    //         return null;
+    //     }
 
-        Object values[] = new Object[2];
-        values[0] = bindings.keySet().toArray(new String[bindings.size()]);
+    //     Object values[] = new Object[2];
+    //     values[0] = bindings.keySet().toArray(new String[bindings.size()]);
 
-        Object[] bindingValues = bindings.values().toArray();
-        for (int i = 0; i < bindingValues.length; i++) {
-            bindingValues[i] = saveAttachedState(context, bindingValues[i]);
-        }
+    //     Object[] bindingValues = bindings.values().toArray();
+    //     for (int i = 0; i < bindingValues.length; i++) {
+    //         bindingValues[i] = saveAttachedState(context, bindingValues[i]);
+    //     }
 
-        values[1] = bindingValues;
+    //     values[1] = bindingValues;
 
-        return values;
+    //     return values;
 
-    }
+    // }
 
     private Object saveSystemEventListeners(FacesContext ctx) {
 
